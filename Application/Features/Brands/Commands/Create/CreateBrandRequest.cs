@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Services.Repositories;
+using AutoMapper;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +15,20 @@ public class CreateBrandRequest : IRequest<CreateBrandResponse>
 
     public class CreateBrandRequestHandler : IRequestHandler<CreateBrandRequest, CreateBrandResponse>
     {
-        public Task<CreateBrandResponse> Handle(CreateBrandRequest request, CancellationToken cancellationToken)
+        private readonly IBrandRepository _brandRepository;
+        private readonly IMapper _mapper;
+
+        public CreateBrandRequestHandler(IBrandRepository brandRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _brandRepository = brandRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<CreateBrandResponse> Handle(CreateBrandRequest request, CancellationToken cancellationToken)
+        {
+            var res = await _brandRepository.AddAsync(new() { Id = Guid.NewGuid(),Name = request.Name});
+
+            return _mapper.Map<CreateBrandResponse>(res);
         }
     }
 }
