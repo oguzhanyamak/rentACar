@@ -29,6 +29,9 @@
     <Reference Include="Core.Application">
       <HintPath>..\..\corePackages\Core.Application\bin\Debug\net8.0\Core.Application.dll</HintPath>
     </Reference>
+    <Reference Include="Core.CrossCuttingConserns">
+      <HintPath>..\..\corePackages\Core.CrossCuttingConserns\bin\Debug\net8.0\Core.CrossCuttingConserns.dll</HintPath>
+    </Reference>
     <Reference Include="Core.Persistence">
       <HintPath>..\..\corePackages\Core.Persistence\bin\Debug\net8.0\Core.Persistence.dll</HintPath>
     </Reference>
