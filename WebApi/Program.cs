@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationServices();
 //builder.Services.AddDistributedMemoryCache(); //inMemory
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddStackExchangeRedisCache(opt => opt.Configuration="localhost:6379"); //Redis
 
 builder.Services.AddPersistenceServices(builder.Configuration);
